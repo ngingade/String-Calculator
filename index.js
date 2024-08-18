@@ -17,6 +17,11 @@ const add = (str) => {
   subStr = delemter ? subStr : str;
 
   const allNumbers = subStr.split(finalRegX);
+  const negativeNumbers = allNumbers.filter((num) => Number(num) < 0);
+  if (negativeNumbers.length > 0) {
+    return `negative numbers ${negativeNumbers} not allowed`;
+  }
+
   const sum = allNumbers.reduce((a, b) => Number(a) + Number(b), 0);
 
   return isNaN(sum) ? "The passed string is invalid" : sum;
